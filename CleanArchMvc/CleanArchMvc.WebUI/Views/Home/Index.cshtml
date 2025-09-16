@@ -1,0 +1,158 @@
+﻿@{
+    ViewData["Title"] = "Home";
+    var featuredProducts = ViewBag.FeaturedProducts as IEnumerable<CleanArchMvc.Application.DTOs.ProductDTO>;
+    var topCategories = ViewBag.TopCategories as IEnumerable<CleanArchMvc.Application.DTOs.CategoryDTO>;
+}
+
+<div class="container py-4">
+
+    <!-- Hero / CTA -->
+    <div class="p-4 p-md-5 mb-4 bg-light rounded-3 shadow-sm">
+        <div class="row align-items-center">
+            <div class="col-md-8">
+                <h1 class="display-5 fw-bold">Welcome to Your Store</h1>
+                <p class="lead">
+                    Quality products, fast checkout, and secure payments. Browse our latest arrivals or explore by category.
+                </p>
+                <div class="d-flex gap-2 flex-wrap">
+                    <a class="btn btn-primary btn-lg" asp-controller="Products" asp-action="Index">Shop Products</a>
+                    <a class="btn btn-outline-secondary btn-lg" asp-controller="Categories" asp-action="Index">Browse Categories</a>
+                    <a class="btn btn-link" asp-controller="Home" asp-action="Privacy">Privacy Policy</a>
+                </div>
+            </div>
+            <div class="col-md-4 d-none d-md-block">
+                <div class="ratio ratio-4x3 bg-white rounded shadow-sm d-flex align-items-center justify-content-center">
+                    <span class="text-muted">Your promo image here</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick search (client-side only) -->
+    <div class="card shadow-sm mb-4">
+        <div class="card-body">
+            <form asp-controller="Products" asp-action="Index" method="get" class="row g-2">
+                <div class="col-sm-8 col-md-10">
+                    <input name="q" class="form-control form-control-lg" type="search" placeholder="Search for products..." aria-label="Search">
+                </div>
+                <div class="col-sm-4 col-md-2 d-grid">
+                    <button class="btn btn-primary btn-lg" type="submit">Search</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Top Categories (optional) -->
+    <section class="mb-5">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h2 class="h4 mb-0">Popular Categories</h2>
+            <a asp-controller="Categories" asp-action="Index" class="btn btn-sm btn-outline-secondary">See all</a>
+        </div>
+
+        @if (topCategories != null && topCategories.Any())
+        {
+            <div class="row g-3">
+                @foreach (var c in topCategories)
+                {
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <a asp-controller="Categories" asp-action="Details" asp-route-id="@c.Id" class="text-decoration-none">
+                            <div class="card h-100 shadow-sm border-0">
+                                <div class="card-body d-flex flex-column justify-content-between">
+                                    <div>
+                                        <h3 class="h6 mb-1 text-dark">@c.Name</h3>
+                                    </div>
+                                    <span class="mt-2 small text-primary">View products →</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                }
+            </div>
+        } else
+        {
+            <div class="text-muted">No categories to display yet. <a asp-controller="Categories" asp-action="Create">Create the first one</a>.</div>
+        }
+    </section>
+
+    <!-- Featured Products (optional) -->
+    <section class="mb-5">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h2 class="h4 mb-0">Featured Products</h2>
+            <a asp-controller="Products" asp-action="Index" class="btn btn-sm btn-outline-secondary">View all</a>
+        </div>
+
+        @if (featuredProducts != null && featuredProducts.Any())
+        {
+            <div class="row g-3">
+                @foreach (var p in featuredProducts)
+                {
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="card h-100 shadow-sm">
+                            <div class="ratio ratio-4x3 bg-light">
+                                @* Render product image if available *@
+                                @if (!string.IsNullOrWhiteSpace(p.Image))
+                                {
+                                    <img src="~/images/@p.Image" class="card-img-top object-fit-cover" alt="@p.Name" />
+                                } else
+                                {
+                                    <div class="d-flex align-items-center justify-content-center text-muted">No image</div>
+                                }
+                            </div>
+                            <div class="card-body d-flex flex-column">
+                                <h3 class="h6 mb-1">@p.Name</h3>
+                                <p class="text-muted small flex-grow-1">@p.Description</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <strong>@p.Price.ToString("C")</strong>
+                                    <div class="btn-group">
+                                        <a asp-controller="Products" asp-action="Details" asp-route-id="@p.Id" class="btn btn-sm btn-outline-primary">Details</a>
+                                        <a asp-controller="Products" asp-action="Edit" asp-route-id="@p.Id" class="btn btn-sm btn-outline-secondary">Edit</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        } else
+        {
+            <div class="text-muted">No featured products yet. <a asp-controller="Products" asp-action="Create">Add a product</a>.</div>
+        }
+    </section>
+
+    <!-- Trust badges / Selling points -->
+    <section class="mb-5">
+        <div class="row g-3">
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm border-0">
+                    <div class="card-body">
+                        <h3 class="h6">Fast & Secure Checkout</h3>
+                        <p class="text-muted small mb-0">Encrypted payments and multiple providers supported.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm border-0">
+                    <div class="card-body">
+                        <h3 class="h6">Easy Returns</h3>
+                        <p class="text-muted small mb-0">Hassle-free returns within the policy window.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm border-0">
+                    <div class="card-body">
+                        <h3 class="h6">Customer Support</h3>
+                        <p class="text-muted small mb-0">We’re here to help with orders, shipping, and more.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer CTA -->
+    <div class="text-center">
+        <a class="btn btn-primary btn-lg" asp-controller="Products" asp-action="Index">Start Shopping</a>
+        <p class="text-muted small mt-2">By continuing, you agree to our <a asp-controller="Home" asp-action="Privacy">Privacy Policy</a>.</p>
+    </div>
+
+</div>

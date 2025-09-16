@@ -1,0 +1,246 @@
+﻿@{
+    ViewData["Title"] = "Privacy Policy";
+    // Optional: set from controller if you prefer
+    var effectiveDate = ViewBag.EffectiveDate as string ?? "September 16, 2025";
+    var companyName = ViewBag.CompanyName as string ?? "Your Company, Inc.";
+    var siteDomain = ViewBag.SiteDomain as string ?? "www.yourstore.com";
+    var contactEmail = ViewBag.ContactEmail as string ?? "privacy@yourstore.com";
+    var contactAddress = ViewBag.ContactAddress as string ?? "123 Commerce Ave, City, State/Province, Country";
+}
+
+<div class="container my-4">
+    <h1 class="mb-2">@ViewData["Title"]</h1>
+    <p class="text-muted">Effective date: @effectiveDate</p>
+
+    <div class="alert alert-info">
+        <strong>Quick note:</strong> This policy is a general template for e-commerce. You must review it with your legal counsel and adapt it to your actual data practices and local laws.
+    </div>
+
+    <nav class="mb-4">
+        <h5 class="mb-2">Table of Contents</h5>
+        <ul class="list-unstyled">
+            <li><a href="#scope">1. Scope</a></li>
+            <li><a href="#collection">2. Information We Collect</a></li>
+            <li><a href="#use">3. How We Use Information</a></li>
+            <li><a href="#legal-basis">4. Legal Bases (GDPR/UK GDPR)</a></li>
+            <li><a href="#sharing">5. How We Share Information</a></li>
+            <li><a href="#payments">6. Payments & Fraud Prevention</a></li>
+            <li><a href="#cookies">7. Cookies & Similar Technologies</a></li>
+            <li><a href="#ads">8. Advertising, Analytics & Personalization</a></li>
+            <li><a href="#retention">9. Data Retention</a></li>
+            <li><a href="#rights">10. Your Privacy Rights</a></li>
+            <li><a href="#transfers">11. International Data Transfers</a></li>
+            <li><a href="#security">12. Security</a></li>
+            <li><a href="#children">13. Children’s Privacy</a></li>
+            <li><a href="#links">14. Third-Party Links</a></li>
+            <li><a href="#changes">15. Changes to This Policy</a></li>
+            <li><a href="#contact">16. Contact Us</a></li>
+        </ul>
+    </nav>
+
+    <section id="scope" class="mb-4">
+        <h3>1. Scope</h3>
+        <p>
+            This Privacy Policy explains how @companyName (“we”, “us”, or “our”) collects, uses, shares, and safeguards
+            personal information when you visit <strong>@siteDomain</strong>, use our mobile or web applications, create an
+            account, make purchases, or otherwise interact with our services (collectively, the “Services”).
+        </p>
+    </section>
+
+    <section id="collection" class="mb-4">
+        <h3>2. Information We Collect</h3>
+        <p>We collect information that you provide directly to us, information we collect automatically, and information from third parties.</p>
+        <h5 class="mt-3">2.1 Information You Provide</h5>
+        <ul>
+            <li><strong>Account & Profile:</strong> name, email, password, phone, billing/shipping addresses.</li>
+            <li><strong>Orders & Customer Support:</strong> items purchased, order notes, messages to support, returns data.</li>
+            <li><strong>Marketing Preferences:</strong> newsletter opt-ins, communication preferences.</li>
+        </ul>
+        <h5 class="mt-3">2.2 Information Collected Automatically</h5>
+        <ul>
+            <li><strong>Device/Usage Data:</strong> IP address, browser type, pages viewed, referring/exit pages, date/time stamps, cookie IDs, session IDs.</li>
+            <li><strong>Approximate Location:</strong> derived from IP address or device settings where permitted.</li>
+        </ul>
+        <h5 class="mt-3">2.3 Information From Third Parties</h5>
+        <ul>
+            <li><strong>Payment Providers:</strong> payment tokens, authorization status (we do not store full card numbers).</li>
+            <li><strong>Fraud & Risk Partners:</strong> signals used to detect and prevent fraudulent activity.</li>
+            <li><strong>Marketing/Analytics Partners:</strong> aggregated insights, ad performance metrics.</li>
+        </ul>
+    </section>
+
+    <section id="use" class="mb-4">
+        <h3>3. How We Use Information</h3>
+        <ul>
+            <li>Provide, operate, and maintain the Services.</li>
+            <li>Process and fulfill orders, returns, and refunds; provide delivery updates.</li>
+            <li>Authenticate users, maintain account security, and prevent fraud.</li>
+            <li>Respond to inquiries and provide customer support.</li>
+            <li>Personalize content, recommendations, and promotional communications.</li>
+            <li>Conduct analytics to improve our products, Services, and user experience.</li>
+            <li>Comply with legal obligations and enforce our terms.</li>
+        </ul>
+    </section>
+
+    <section id="legal-basis" class="mb-4">
+        <h3>4. Legal Bases (GDPR/UK GDPR)</h3>
+        <p>Where required, we process personal data under the following legal bases:</p>
+        <ul>
+            <li><strong>Contract:</strong> to provide the Services and fulfill orders you request.</li>
+            <li><strong>Legitimate Interests:</strong> to secure our Services, prevent fraud, and improve features.</li>
+            <li><strong>Consent:</strong> for certain marketing, cookies, or where required by law. You may withdraw consent at any time.</li>
+            <li><strong>Legal Obligation:</strong> to comply with tax, accounting, and regulatory requirements.</li>
+        </ul>
+    </section>
+
+    <section id="sharing" class="mb-4">
+        <h3>5. How We Share Information</h3>
+        <p>We may share information with:</p>
+        <ul>
+            <li><strong>Service Providers:</strong> hosting, analytics, customer support, email/SMS delivery, order fulfillment, shipping.</li>
+            <li><strong>Payment Processors:</strong> to process payments and handle chargebacks.</li>
+            <li><strong>Fraud/Risk Partners:</strong> to detect, prevent, and investigate fraudulent activity.</li>
+            <li><strong>Business Transfers:</strong> in connection with mergers, acquisitions, or asset sales.</li>
+            <li><strong>Legal/Compliance:</strong> to comply with applicable law, lawful requests, and to protect rights and safety.</li>
+        </ul>
+        <p>We do not sell personal information for money. Depending on your jurisdiction, certain sharing for advertising may be considered a “sale” or “share” — see <a href="#rights">Your Privacy Rights</a>.</p>
+    </section>
+
+    <section id="payments" class="mb-4">
+        <h3>6. Payments & Fraud Prevention</h3>
+        <p>
+            We use third-party payment processors (e.g., Stripe, PayPal, or others you configure) to handle payments securely.
+            We receive limited information related to the transaction (e.g., payment token, authorization result). We never store full
+            credit card numbers on our servers. We may use fraud prevention tools (device fingerprinting, risk scoring) to protect you and us.
+        </p>
+    </section>
+
+    <section id="cookies" class="mb-4">
+        <h3>7. Cookies & Similar Technologies</h3>
+        <p>
+            We use cookies, pixels, and similar technologies to enable essential site functionality (e.g., cart, checkout),
+            analyze usage, personalize content, and measure marketing campaigns.
+        </p>
+        <ul>
+            <li><strong>Essential Cookies:</strong> required for core features like sign-in, cart, and checkout.</li>
+            <li><strong>Functional/Analytics:</strong> help us understand usage and improve the site.</li>
+            <li><strong>Advertising:</strong> used to deliver relevant ads and measure their performance.</li>
+        </ul>
+        <p>
+            You can manage cookie preferences in your browser settings. If you implement a cookie banner or preferences center,
+            link it here:
+            <a href="#" onclick="if(window.showCookieSettings) window.showCookieSettings(); return false;">Manage Cookie Preferences</a>.
+        </p>
+    </section>
+
+    <section id="ads" class="mb-4">
+        <h3>8. Advertising, Analytics & Personalization</h3>
+        <p>
+            We may work with analytics and advertising partners who set cookies or use similar technologies to collect information
+            about your use of the Services and other websites over time for analytics and interest-based advertising.
+        </p>
+        <p>
+            Depending on your jurisdiction, you may opt out of certain advertising activities. See <a href="#rights">Your Privacy Rights</a>.
+        </p>
+    </section>
+
+    <section id="retention" class="mb-4">
+        <h3>9. Data Retention</h3>
+        <p>
+            We retain personal information for as long as necessary to provide the Services, fulfill transactions, comply with our legal obligations,
+            resolve disputes, and enforce our agreements. Retention periods may vary depending on the type of data and applicable law.
+        </p>
+    </section>
+
+    <section id="rights" class="mb-4">
+        <h3>10. Your Privacy Rights</h3>
+        <p>Your rights depend on your location. Subject to applicable law, you may have the right to:</p>
+        <ul>
+            <li><strong>Access</strong> your personal information and obtain a copy.</li>
+            <li><strong>Correct</strong> inaccurate or incomplete information.</li>
+            <li><strong>Delete</strong> your information (“right to be forgotten”).</li>
+            <li><strong>Object</strong> to or <strong>restrict</strong> certain processing.</li>
+            <li><strong>Portability:</strong> receive your data in a portable format.</li>
+            <li><strong>Withdraw Consent</strong> where processing is based on consent.</li>
+        </ul>
+
+        <h5 class="mt-3">EU/EEA & UK Residents</h5>
+        <p>
+            You may contact us (see <a href="#contact">Contact Us</a>) to exercise rights under the GDPR/UK GDPR and lodge a complaint with your local data protection authority.
+        </p>
+
+        <h5 class="mt-3">California Residents (CCPA/CPRA)</h5>
+        <p>
+            California residents have the right to request access to, deletion of, and correction of personal information.
+            You also have the right to opt out of “selling” or “sharing” personal information for cross-context behavioral advertising.
+            If applicable, use this link to manage preferences:
+            <a href="/privacy/do-not-sell">Do Not Sell or Share My Personal Information</a>.
+        </p>
+
+        <h5 class="mt-3">Exercising Your Rights</h5>
+        <p>
+            To submit a request, contact us at <a href="mailto:@contactEmail">@contactEmail</a>. We may verify your identity before fulfilling your request.
+        </p>
+    </section>
+
+    <section id="transfers" class="mb-4">
+        <h3>11. International Data Transfers</h3>
+        <p>
+            If we transfer personal information internationally, we implement appropriate safeguards (e.g., Standard Contractual Clauses)
+            where required by law to protect your information.
+        </p>
+    </section>
+
+    <section id="security" class="mb-4">
+        <h3>12. Security</h3>
+        <p>
+            We implement administrative, technical, and physical safeguards designed to protect personal information.
+            However, no method of transmission or storage is 100% secure; we cannot guarantee absolute security.
+        </p>
+    </section>
+
+    <section id="children" class="mb-4">
+        <h3>13. Children’s Privacy</h3>
+        <p>
+            Our Services are not directed to children under the age required by applicable law (e.g., 13 or 16).
+            We do not knowingly collect personal information from children. If you believe a child has provided personal information,
+            please contact us so we can take appropriate action.
+        </p>
+    </section>
+
+    <section id="links" class="mb-4">
+        <h3>14. Third-Party Links</h3>
+        <p>
+            Our Services may contain links to third-party websites or services. We are not responsible for the privacy practices
+            of those third parties. We encourage you to review their privacy policies.
+        </p>
+    </section>
+
+    <section id="changes" class="mb-4">
+        <h3>15. Changes to This Policy</h3>
+        <p>
+            We may update this Privacy Policy from time to time. If we make material changes, we will notify you by posting the new policy
+            on this page and updating the “Effective date” above. Your continued use of the Services after the effective date constitutes
+            acceptance of the revised policy.
+        </p>
+    </section>
+
+    <section id="contact" class="mb-4">
+        <h3>16. Contact Us</h3>
+        <address>
+            <strong>@companyName</strong><br />
+            @contactAddress<br />
+            Email: <a href="mailto:@contactEmail">@contactEmail</a>
+        </address>
+    </section>
+
+    <hr />
+
+    <div class="d-flex flex-wrap gap-2">
+        <a class="btn btn-outline-secondary" href="/privacy/do-not-sell">Do Not Sell/Share My Personal Information</a>
+        <a class="btn btn-outline-secondary" href="/privacy/data-request">Submit a Data Request</a>
+        <button type="button" class="btn btn-outline-secondary" onclick="if(window.showCookieSettings) window.showCookieSettings();">
+            Manage Cookie Preferences
+        </button>
+    </div>
+</div>
