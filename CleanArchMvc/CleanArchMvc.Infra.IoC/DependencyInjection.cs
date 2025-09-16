@@ -4,6 +4,11 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using CleanArchMvc.Domain.Interfaces;
 using CleanArchMvc.Infra.Data.Repositories;
+using CleanArchMvc.Application.Interfaces;
+using CleanArchMvc.Application.Services;
+using CleanArchMvc.Application.Mappings;
+using System;
+using MediatR;
 
 namespace CleanArchMvc.Infra.IoC
 {
@@ -17,8 +22,20 @@ namespace CleanArchMvc.Infra.IoC
                     configuration.GetConnectionString("DefaultConnection"),
                     b => b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
 
+            //Repos
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<IProductRepository, ProductRepository>();
+
+            //UseCases
+            services.AddScoped<ICategoryService, CategoryService>();
+            services.AddScoped<IProductService, ProductService>();
+
+            //AutoMapper
+            services.AddAutoMapper(typeof(DomainToDTOMappingProfile));
+
+            //Mediatr
+            var myHandlers = AppDomain.CurrentDomain.Load("CleanArchMvc.Application");
+            services.AddMediatR(myHandlers);
 
             return services;
         }
