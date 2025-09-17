@@ -1,18 +1,18 @@
 ﻿using CleanArchMvc.Application.DTOs;
 using CleanArchMvc.Application.Interfaces;
-using CleanArchMvc.Application.Services;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace CleanArchMvc.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class ProductsController : ControllerBase
     {
-
         private readonly IProductService _productService;
-
         public ProductsController(IProductService productService)
         {
             _productService = productService;
@@ -21,56 +21,66 @@ namespace CleanArchMvc.API.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<ProductDTO>>> Get()
         {
-            var categories = await _productService.GetProductsAsync();
-            if (categories == null)
-                return NotFound("Categories not found");
-            return Ok(categories);
+            var produtos = await _productService.GetProductsAsync();
+            if (produtos == null)
+            {
+                return NotFound("Products not found");
+            }
+            return Ok(produtos);
         }
 
-        [HttpGet(( "{id}" ), Name = "GetProduct")]
+        [HttpGet("{id}", Name = "GetProduct")]
         public async Task<ActionResult<ProductDTO>> Get(int id)
         {
-            var category = await _productService.GetByIdAsync(id);
-            if (category == null)
-                return NotFound("Category not found");
-            return Ok(category);
+            var produto = await _productService.GetByIdAsync(id);
+            if (produto == null)
+            {
+                return NotFound("Product not found");
+            }
+            return Ok(produto);
         }
 
         [HttpPost]
-        public async Task<ActionResult> Post([FromBody] ProductDTO productDTO)
+        public async Task<ActionResult> Post([FromBody] ProductDTO produtoDto)
         {
-            if (productDTO == null)
-                return BadRequest("Invalid Data");
+            if (produtoDto == null)
+                return BadRequest("Data Invalid");
 
-            await _productService.CreateAsync(productDTO);
+            await _productService.CreateAsync(produtoDto);
 
-            return new CreatedAtRouteResult("GetProduct", new { id = productDTO.Id }, productDTO);
+            return new CreatedAtRouteResult("GetProduct",
+                new { id = produtoDto.Id }, produtoDto);
         }
 
-        [HttpPut]
-        public async Task<ActionResult> Put(int id, [FromBody] ProductDTO productDTO)
+        [HttpPut("{id}")]
+        public async Task<ActionResult> Put(int id, [FromBody] ProductDTO produtoDto)
         {
-            if (id != productDTO.Id)
-                return BadRequest();
+            if (id != produtoDto.Id)
+            {
+                return BadRequest("Data invalid");
+            }
 
-            if (productDTO == null)
-                return BadRequest();
+            if (produtoDto == null)
+                return BadRequest("Data invalid");
 
-            await _productService.UpdateAsync(productDTO);
-            return Ok(productDTO);
+            await _productService.UpdateAsync(produtoDto);
+
+            return Ok(produtoDto);
         }
 
-        [HttpDelete("{id:int}")]
-        public async Task<ActionResult> Delete(int id)
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<ProductDTO>> Delete(int id)
         {
-            var product = await _productService.GetByIdAsync(id);
+            var produtoDto = await _productService.GetByIdAsync(id);
 
-            if (product == null)
-                return NotFound("Category not found");
+            if (produtoDto == null)
+            {
+                return NotFound("Product not found");
+            }
 
             await _productService.RemoveAsync(id);
-            return Ok(product);
-        }
 
+            return Ok(produtoDto);
+        }
     }
 }
