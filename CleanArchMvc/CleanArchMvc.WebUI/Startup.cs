@@ -8,7 +8,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using CleanArchMvc.Infra.IoC;   
+using CleanArchMvc.Infra.IoC;
+using CleanArchMvc.Domain.Account;
 
 namespace CleanArchMvc.WebUI
 {
@@ -29,7 +30,7 @@ namespace CleanArchMvc.WebUI
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ISeedUserRoleInitial seedUserRoleInitial)
         {
             if (env.IsDevelopment())
             {
@@ -44,6 +45,13 @@ namespace CleanArchMvc.WebUI
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            //Seeding the identity
+            seedUserRoleInitial.SeedRoles();
+            seedUserRoleInitial.SeedUsers();
+
+            //Identity Authentication
+            app.UseAuthentication();
 
             app.UseAuthorization();
 
