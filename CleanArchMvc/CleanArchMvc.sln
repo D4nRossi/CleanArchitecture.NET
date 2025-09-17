@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.14.36310.24 d17.14
+# Visual Studio Version 18
+VisualStudioVersion = 18.0.11012.119 d18.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanArchMvc.Domain", "CleanArchMvc.Domain\CleanArchMvc.Domain.csproj", "{B9ED809F-AD9E-45C9-B4F2-375BBB14953A}"
 EndProject
@@ -21,9 +21,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Core", "2 - Core", "{1A
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Infrastructure", "3 - Infrastructure", "{1EF6E17C-71B9-4338-8CB9-3CAD38056BC9}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - MVC", "1 - MVC", "{5C26586C-9D17-498D-8789-596B8823AB6C}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - View", "1 - View", "{5C26586C-9D17-498D-8789-596B8823AB6C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanArch.Mvc.Domain.Tests", "CleanArch.Mvc.Domain.Tests\CleanArch.Mvc.Domain.Tests.csproj", "{BE16E60B-3DB6-477F-A46F-C91C8B158908}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanArchMvc.API", "CleanArchMvc.API\CleanArchMvc.API.csproj", "{5819E35A-19DE-4B92-9BEE-5D2CDE848D61}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -55,6 +57,10 @@ Global
 		{BE16E60B-3DB6-477F-A46F-C91C8B158908}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BE16E60B-3DB6-477F-A46F-C91C8B158908}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BE16E60B-3DB6-477F-A46F-C91C8B158908}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5819E35A-19DE-4B92-9BEE-5D2CDE848D61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5819E35A-19DE-4B92-9BEE-5D2CDE848D61}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5819E35A-19DE-4B92-9BEE-5D2CDE848D61}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5819E35A-19DE-4B92-9BEE-5D2CDE848D61}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -69,6 +75,7 @@ Global
 		{1EF6E17C-71B9-4338-8CB9-3CAD38056BC9} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{5C26586C-9D17-498D-8789-596B8823AB6C} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{BE16E60B-3DB6-477F-A46F-C91C8B158908} = {88C59CC7-6B65-4CB1-BB28-455FED50B406}
+		{5819E35A-19DE-4B92-9BEE-5D2CDE848D61} = {5C26586C-9D17-498D-8789-596B8823AB6C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5C61CC7D-419E-4455-86EB-07CFF4A40DBC}
